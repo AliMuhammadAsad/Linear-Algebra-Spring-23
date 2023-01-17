@@ -1,0 +1,95 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{HW1}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra\\ Homework 1}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+\subsection*{\textbf{Ex Set 1.4 : Inverses; Rules of Matrix Arithmetic}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{11. } Find the inverse of $ \begin{bmatrix}
+        \cos\theta & \sin\theta \\ 
+        -\sin\theta & \cos\theta
+    \end{bmatrix} $
+    \begin{solution}
+        Determinant of the matrix $ = (\cos\theta \times \cos\theta) - (-\sin\theta \times \sin\theta)$ \\ 
+        Det $ = \cos^2\theta + \sin^2\theta \implies $ Det $ = 1 $ \\ 
+        Adjoint $ = \begin{bmatrix}
+            \cos\theta & -\sin\theta \\ 
+            \sin\theta & \cos\theta
+        \end{bmatrix} $ \\  
+        Inverse = $ \frac{\text{Adjoint}}{\text{Determinant}} \implies $ Inverse $ = \begin{bmatrix}
+            \cos\theta & -\sin\theta \\ 
+            \sin\theta & \cos\theta
+        \end{bmatrix} $
+    \end{solution}
+
+    \question
+    \textbf{13. } Consider the matrix $$ A = \begin{bmatrix}
+        a_{11} & 0 & \cdots & 0 \\ 
+        0 & a_{22} & \cdots & 0 \\
+        \vdots & \vdots & & \vdots \\ 
+        0 & 0 & \cdots & a_{nn}
+    \end{bmatrix} $$
+    where $ a_{11}a_{22}\cdots a_{nn} \neq 0 $. Show that $A$ is invertible, and find its inverse.
+    \begin{solution}
+        
+    \end{solution}
+    
+    \question
+    \textbf{15. } (a) Show that a matrix with a row of zeroes cannot have an inverse. 
+
+
+    \hspace{7.5mm} (b) Show that a matrix with a column of zeroes cannot have an inverse.
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{16. } Is the sum of two invertible matrices necessarily invertible?
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{17. } Let $A$ and $B$ be square matrices such that $ AB = 0 $. Show that if $A$ is invertible, then $B$ = 0. 
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{29. } (a) Show that if $A$ is invertible and $ AB = AC $, then $ B = C $.
+
+
+    \hspace{7.5mm} (b) Explain why part (a) and Example 3 (from the book) do not contradict one another.
+    \begin{solution}
+        
+    \end{solution}
+
+\end{questions}
+
+\end{document}

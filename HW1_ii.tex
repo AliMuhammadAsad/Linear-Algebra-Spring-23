@@ -1,0 +1,499 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{mleftright}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{HW1}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\title{Linear Algebra\\ Homework 1}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+\subsection*{\textbf{Ex Set 1.3 Matrices and Matrix Operations}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{1.} $$ A \text{\hspace{15mm}} B \text{\hspace{15mm}} C \text{\hspace{15mm}} D \text{\hspace{15mm}} E$$
+    $$ \text{\hspace{1mm}} (4 \text{ x } 5) \text{\hspace{7mm}} (4 \text{ x } 5) \text{\hspace{7mm}} (5 \text{ x } 2) \text{\hspace{8mm}} (4 \text{ x } 2) \text{\hspace{8mm}} (5 \text{ x } 4) $$
+    
+    Determine which of the following matrix operations are defined. For those that are defined, give the size of the resulting matrix. 
+
+    (a) $ BA $ \\ (b) $ AC + D $ \\ (c) $ AE + B $ \\ (d) $ AB + B $ \\ (e) $ E(A + B) $ \\ (f) $ E(AC) $
+    \begin{solution}
+        
+        (a) Not defined since $B$ has 5 columns but $A$ has 4 rows so columns $\neq$ rows. \\ 
+        (b) Is defined as $AC$ is defined and will result in a (4 x 2) matrix which has the same order as $D$ and can be added. \\ 
+        (c) Not defined. $AE$ will result in a matrix of order (4 x 4) which is not the same as B which has order (4 x 5). So addition is not possible so not defined. \\ 
+        (d) Not defined as $AB$ is not defined as $A$ has 5 columns while $B$ has 4 rows. \\ 
+        (e) Is defined and will result in a matrix of order (5 x 5) as $A + B$ will give a matrix of order (4 x 5) which when is post multiplied by $E$ will give matrix of order (5 x 5). \\ 
+        (f) Is defined. $AC$ will give a (4 x 2) matrix which when post multiplied by $E$ will give a (5 x 2) matrix. 
+    \end{solution}
+    
+    \question
+    % \textbf{2. } Solve the following matrix equation for $ a, b, c, \text{ and } d.$ \\ $\begin{bmatrix}
+    %     a-b & b + c \\ 
+    %     3d + c & 2a - 4d
+    % \end{bmatrix} = \begin{bmatrix}
+    %     8 & 1 \\ 
+    %     7 & 6
+    % \end{bmatrix}$
+    % \begin{solution}
+    %     Our equations are as follows: \\ 
+    %     (1) $ a - b = 8 \implies a = 8 + b \implies b = a -  $ \\ 
+    %     (2) $ b + c = 1 \implies b = 1 - c \implies c = 1 - b $ \\ 
+    %     (3) $ 3d + c = 7 $ \\ 
+    %     (4) $ 2a - 4d = 6 $
+        
+    %     Substituting (2) in (3), we get $ 3d + 1 - b = 7 \implies -b + 3d = 6 $ (5) \\ 
+    %     Substituting (1) in (4), we get $ 16 + 2b - 4d = 6 \implies 2b - 4d = -10 $ (6) 
+
+    %     Solving (5) and (6) simultaneously, $ d = 1, b = - 3 $. Then plugging in the values of $d$ and $b$ in (1) and (2), $ a = 5 $ and $ c = 4 $. \\ 
+    %     $ a = 5, b = -3, c = 4, d = 1 $
+    % \end{solution}
+
+    \question
+    \textbf{7. } Let \newline\newline
+    $A = \begin{bmatrix}
+        3 & -2 & 7 \\ 
+        6 & 5 & 4 \\ 
+        0 & 4 & 9
+    \end{bmatrix} \text{ and } 
+    B = \begin{bmatrix}
+        6 & -2 & 4 \\ 
+        0 & 1 & 3 \\ 
+        7 & 7 & 5
+    \end{bmatrix}$  
+
+    Use the method of Example 7 [given in the book] to find \\ 
+    (a) the first row of $AB$ \\ 
+    (b) the third row of $AB$ \\ 
+    (c) the second column of $AB$ \\ 
+    (d) the first column of $BA$ \\ 
+    (e) the third row of $AA$ \\ 
+    (f) the third column of $AA$ 
+    \begin{solution}
+        
+        (a) The first row of $AB$ can be obtained by \\ 
+        $ \begin{bmatrix}
+            3 & -2 & 7
+        \end{bmatrix} \begin{bmatrix}
+            6 & -2 & 4 \\ 
+            0 & 1 & 3 \\ 
+            7 & 7 & 5
+        \end{bmatrix} = \begin{bmatrix}
+            3(6)-2(0)+7(7) & 3(-2)-2(1)+7(7) & 3(4)-2(3)+7(5) 
+        \end{bmatrix}$ \\ 
+        $ = \begin{bmatrix}
+            67 & 41 & 41
+        \end{bmatrix} $
+
+        (b) the third row of $AB$ can be obtained by \\ 
+        $ \begin{bmatrix}
+            0 & 4 & 9
+        \end{bmatrix} \begin{bmatrix}
+            6 & -2 & 4 \\ 
+            0 & 1 & 3 \\ 
+            7 & 7 & 5
+        \end{bmatrix} = \begin{bmatrix}
+            0(6)+4(0)+9(7) & 0(-2)+4(1)+9(7) & 0(4)+4(3)+9(5)
+        \end{bmatrix}$ \\ 
+        $ \begin{bmatrix}
+            63 & 67 & 57
+        \end{bmatrix} $
+
+        (c) the second column of $AB$ can be obtained by \\ 
+        $ \begin{bmatrix}
+            3 & -2 & 7 \\ 
+            6 & 5 & 4 \\ 
+            0 & 4 & 9
+        \end{bmatrix} \begin{bmatrix}
+            -2 \\ 1 \\ 7
+        \end{bmatrix} = \begin{bmatrix}
+            41 \\ 21 \\ 67
+        \end{bmatrix} $
+
+        (d) the first column of $BA$ can be obtained by \\ 
+        $ \begin{bmatrix}
+            6 & -2 & 4 \\ 
+            0 & 1 & 3 \\ 
+            7 & 7 & 5
+        \end{bmatrix} \begin{bmatrix}
+            3 \\ 6 \\ 0
+        \end{bmatrix} = \begin{bmatrix}
+            6 \\ 6 \\ 63
+        \end{bmatrix}$
+
+        (e) the third row of $AA$ \\ 
+        $ \begin{bmatrix}
+            0 & 4 & 9
+        \end{bmatrix} \begin{bmatrix}
+            3 & -2 & 7 \\ 
+            6 & 5 & 4 \\ 
+            0 & 4 & 9
+        \end{bmatrix} = \begin{bmatrix}
+            24 & 56 & 97
+        \end{bmatrix} $
+
+        (f) the third column of $AA$ \\ 
+        $ \begin{bmatrix}
+            3 & -2 & 7 \\ 
+            6 & 5 & 4 \\ 
+            0 & 4 & 9
+        \end{bmatrix} \begin{bmatrix}
+            7 \\ 4 \\ 9
+        \end{bmatrix} = \begin{bmatrix}
+            76 \\ 98 \\ 97
+        \end{bmatrix}$
+    \end{solution}
+
+    \question
+    \textbf{8. } Let $A$ and $B$ be matrices from Q7. Use method of Example 9 [from the book] to \\ 
+    (a) express each column matrix of $AB$ as a linear combination of the column matrices of $A$ \\ 
+    (b) express each column matrix of $BA$ as a linear combination of the column matrices of $B$
+    \begin{solution}
+        $ AB = \begin{bmatrix}
+            67 & 41 & 41 \\ 
+            64 & 21 & 59 \\ 
+            63 & 67 & 57
+        \end{bmatrix} $ and $ BA = \begin{bmatrix}
+            6 & -6 & 70 \\ 
+            6 & 17 & 31 \\ 
+            63 & 41 & 122
+        \end{bmatrix} $
+
+        (a) $ \begin{bmatrix}
+            67 \\ 64 \\ 63
+        \end{bmatrix} = 6\begin{bmatrix}
+            3 \\ 6 \\ 0
+        \end{bmatrix} + 0\begin{bmatrix}
+            -2 \\ 5 \\ 4
+        \end{bmatrix} + 7\begin{bmatrix}
+            7 \\ 4 \\ 9
+        \end{bmatrix}$ \\ 
+        $ \begin{bmatrix}
+            41 \\ 21 \\ 67
+        \end{bmatrix} = -2\begin{bmatrix}
+            3 \\ 6 \\ 0
+        \end{bmatrix} + 1\begin{bmatrix}
+            -2 \\ 5 \\ 4
+        \end{bmatrix} + 7\begin{bmatrix}
+            7 \\ 4 \\ 9
+        \end{bmatrix}$ \\ 
+        $ \begin{bmatrix}
+            41 \\ 59 \\ 57
+        \end{bmatrix} = 4\begin{bmatrix}
+            3 \\ 6 \\ 0
+        \end{bmatrix} + 3\begin{bmatrix}
+            -2 \\ 5 \\ 4
+        \end{bmatrix} + 5\begin{bmatrix}
+            7 \\ 4 \\ 9
+        \end{bmatrix} $
+
+        (b) $ \begin{bmatrix}
+            6 \\ 6 \\ 63
+        \end{bmatrix} = 3\begin{bmatrix}
+            6 \\ 0 \\ 7
+        \end{bmatrix} + 6\begin{bmatrix}
+            -2 \\ 1 \\ 7
+        \end{bmatrix} + 0\begin{bmatrix}
+            4 \\ 3 \\ 5
+        \end{bmatrix}$ \\ 
+        $ \begin{bmatrix}
+            -6 \\ 17 \\ 41
+        \end{bmatrix} = -2\begin{bmatrix}
+            6 \\ 0 \\ 7
+        \end{bmatrix} + 5\begin{bmatrix}
+            -2 \\ 1 \\ 7
+        \end{bmatrix} + 4\begin{bmatrix}
+            4 \\ 3 \\ 5
+        \end{bmatrix}$ \\ 
+        $ \begin{bmatrix}
+            70 \\ 31 \\ 122
+        \end{bmatrix} = 7\begin{bmatrix}
+            6 \\ 0 \\ 7
+        \end{bmatrix} + 4\begin{bmatrix}
+            -2 \\ 1 \\ 7
+        \end{bmatrix} + 9\begin{bmatrix}
+            4 \\ 3 \\ 5
+        \end{bmatrix}$
+    \end{solution}
+
+    \question
+    \textbf{12. } (a) Show that if $AB$ and $BA$ are both defined, then $AB$ and $BA$ are square matrices. 
+
+    \hspace{7.5mm} (b) Show that if $A$ is an $m$x$n$ matrix and $A(BA)$ is defined, then $B$ is an $n$x$m$ matrix.
+    \begin{solution}
+        
+        (a) Let $A$ be an $m$x$n$ matrix, and let $B$ be an $k$x$l$ matrix. Then for $AB$ to be defined, the number of columns of $A$ have to be equal to the number of rows of $B$ so $n = k$. 
+
+        Similarly, for $BA$ to be defined, number of columns of $B$ have to be equal to the number of rows of $A$ so $m = l$. Then $A$ is an $m$x$n$ matrix and $B$ is an $n$x$m$ matrix. 
+        
+        Then $AB$ is an $m$x$m$ matrix and $BA$ is an $n$x$n$ matrix which are both square matrices. Hence shown. 
+
+        (b) Let $A$ be an $m$x$n$ matrix. If $A(BA)$ is defined, then the number of columns of $A$ has to be equal to the number of rows of $BA$, then $BA$ has $n$ number of rows. \\ 
+        For $BA$ to be defined, the number of columns of $B$ has to be equal to the number of rows of $A$. Hence, $B$ has $m$ columns. To produce matrix $BA$ with $n$ number of rows, $B$ must have $n$ number of rows. \\ 
+        Hence shown that $B$ is an $n$x$m$ matrix.
+    \end{solution}
+
+    \question
+    \textbf{13. } In each part, find matrices $A, x,$ and $b$ that express the given system of linear equations as a single matrix equation $ Ax = b $. \\ 
+    (a) 
+    
+    $ \begin{matrix}
+        2x_1 &- 3x_2 & +5x_3 & = 7 \\ 
+        9x_1 & -x_2 & +x_3 & = -1 \\ 
+        x_1 & +5x_2 & +4x_3 & = 0
+    \end{matrix} $
+
+    (b) 
+    
+    $ \begin{matrix}
+        4x_1 & & -3x_3 & +x_4 = 1 \\ 
+        5x_1 & +x_2 & & -8x_4 = 3 \\ 
+        2x_1 & -5x_2 & +9x_3 & -x_4 & = 0 \\ 
+        & 3x_2 & -x_3 & +7x_4 & = 2
+    \end{matrix} $
+    \begin{solution}
+
+        (a)
+        $ A = \begin{bmatrix}
+            2 & -3 & 5 \\ 
+            9 & -1 & 1 \\ 
+            1 & 5 & 4
+        \end{bmatrix}, x = \begin{bmatrix}
+            x_1 \\ x_2 \\ x_3
+        \end{bmatrix}, b = \begin{bmatrix}
+            7 \\ -1 \\ 0
+        \end{bmatrix} $
+
+        (b) $ A = \begin{bmatrix}
+            4 & 0 & -3 & 1 \\ 
+            5 & 1 & 0 & -8 \\ 
+            2 & -5 & 9 & -1 \\ 
+            0 & 3 & -1 & 7
+        \end{bmatrix}, b = \begin{bmatrix}
+            x_1 \\ x_2 \\ x_3 \\ x_4
+        \end{bmatrix}, b = \begin{bmatrix}
+            1 \\ 3 \\ 0 \\ 2
+        \end{bmatrix} $
+    \end{solution}
+
+    \question
+    \textbf{17. } In each part, determine whether block multiplication can be used to compute $AB$ from the given partitions. If so, compute the product by block multiplication. [\textbf{\textit{Note}} See Exercise 15 of book.]
+
+    % (a) $$ A = \begin{bmatrix}[ccc|c]
+    %     -1 & 2 & 1 & 5 \\ 
+
+    % \end{bmatrix} $$
+    (a) \[ A = \renewcommand\arraystretch{1.3}
+    \mleft[ 
+    \begin{array}{ccc|c}
+        -1 & 2 & 1 & 5 \\ 
+        0 & -3 & 4 & 2 \\ 
+        \hline
+        1 & 5 & 6 & 1
+    \end{array}
+    \mright], B = \renewcommand\arraystretch{1.3}
+    \mleft[
+    \begin{array}{cc|c}
+        2 & 1 & 4 \\ 
+        -3 & 5 & 2 \\ 
+        \hline 
+        7 & -1 & 5 \\ 
+        0 & 3 & -3
+    \end{array}
+    \mright] \]
+    
+    (b) \[ A = \renewcommand\arraystretch{1.3}
+    \mleft[ 
+    \begin{array}{cccc}
+        -1 & 2 & 1 & 5 \\ 
+        0 & -3 & 4 & 2 \\ 
+        \hline
+        1 & 5 & 6 & 1
+    \end{array}
+    \mright], B = \renewcommand\arraystretch{1.3}
+    \mleft[
+    \begin{array}{c|c|c}
+        2 & 1 & 4 \\ 
+        -3 & 5 & 2 \\  
+        7 & -1 & 5 \\ 
+        0 & 3 & -3
+    \end{array}
+    \mright] \]
+    \begin{solution}
+        
+        (a) The matrix $AB$ can not be computed using block multiplication as the partitioned matrix $A_{11}$ is an $ 2 \text{x} 3 $ matrix whereas the partitioned $B_{11}$ is an $ 2 \text{x} 2 $ matrix. So matrix multiplication is not possible as the number of columns of $A_{11}$ are not equal to the number of rows of $B_{11}$.
+
+        (b) The matrix $ A_{11} $ is an $2$x$4$ matrix, $A_{21}$ is an $1$x$4$ matrix, and  $B_{11}, B_{12}, \text{ and } B_{13}$ are all $4$x$1$ matrices. So matrix multiplication is possible between $A_{11}$ and all partitions of $B$, and $A_{21}$ and all partitions of $B$. \\ 
+        The resultant matrix should be a $3$x$3$ matrix with 6 partitions as follows:\[ A = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{c|c|c}
+            A_{11}B_{11} & A_{11}B_{12} & A_{11}B_{13} \\
+            \hline 
+            A_{21}B_{11} & A_{21}B_{12} & A_{21}B_{13}
+        \end{array}
+        \mright]\]
+
+        \[ A_{11}B_{11} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            -1 & 2 & 1 & 5 \\ 
+            0 & -3 & 4 & 2
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            2 \\ 3 \\ 7 \\ 0
+        \end{array}
+        \mright] = \begin{bmatrix}
+            -1 \\ 37
+        \end{bmatrix}\]
+
+        \[ A_{11}B_{12} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            -1 & 2 & 1 & 5 \\ 
+            0 & -3 & 4 & 2
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            1 \\ 5 \\ -1 \\ 3
+        \end{array}
+        \mright] = \begin{bmatrix}
+            23 \\ -13 
+        \end{bmatrix}\]
+
+        \[ A_{11}B_{13} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            -1 & 2 & 1 & 5 \\ 
+            0 & -3 & 4 & 2
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            4 \\ 2 \\ 5 \\ -3
+        \end{array}
+        \mright] = \begin{bmatrix}
+            -10 \\ 8
+        \end{bmatrix}\]
+
+        \[ A_{21}B_{11} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            1 & 5 & 6 & 1
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            2 \\ 3 \\ 7 \\ 0
+        \end{array}
+        \mright] = \begin{bmatrix}
+            29
+        \end{bmatrix}\]
+
+        \[ A_{21}B_{11} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            1 & 5 & 6 & 1
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            1 \\ 5 \\ -1 \\ 3
+        \end{array}
+        \mright] = \begin{bmatrix}
+            23
+        \end{bmatrix}\]
+
+        \[ A_{21}B_{11} = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{cccc}
+            1 & 5 & 6 & 1
+        \end{array}
+        \mright] \renewcommand\arraystretch{1.3}
+        \mleft[
+        \begin{array}{c}
+            4 \\ 2 \\ 5 \\ -3
+        \end{array}
+        \mright] = \begin{bmatrix}
+            41
+        \end{bmatrix}\]
+
+        Then combining our results, \[ 
+        AB = \renewcommand\arraystretch{1.3}
+        \mleft[ 
+        \begin{array}{c|c|c}
+            \begin{bmatrix} -1 \\ 37 \end{bmatrix} & \begin{bmatrix} 23 \\ -13 \end{bmatrix} & \begin{bmatrix} -10 \\ 8 \end{bmatrix} \\ 
+            \hline
+            [29] & [23] & [41]
+        \end{array}
+        \mright]  = \begin{bmatrix}
+            -1 & 23 & -10 \\ 
+            37 & -13 & 8 \\ 
+            29 & 23 & 41
+        \end{bmatrix}
+        \]
+    \end{solution}
+
+    \question
+    \textbf{18 (a)} Show that if $A$ has a row of zeroes and $B$ is any matrix for which $AB$ is defined, then $AB$ also has a row of zeroes. 
+    \begin{solution}
+        
+        Let $A = \begin{bmatrix}
+            0 & 0 & ... & 0 \\ 
+            a_{21} & a_{22} & ... & a_{2n} \\ 
+            \vdots & \vdots & & \vdots \\
+            a_{m1} & a_{m2} & ... & a_{mn} 
+        \end{bmatrix}$ and $ B = \begin{bmatrix}
+            b_{11} & b_{12} & ... & b_{1k} \\ 
+            b_{21} & b_{22} & ... & b_{2k} \\ 
+            \vdots & \vdots & & \vdots \\ 
+            b_{n1} & b_{n2} & ... & b_{nk}
+        \end{bmatrix} $.
+
+        Then \\ $ AB = \begin{bmatrix}
+            0b_{11} + 0b_{21} + ... + 0b_{n1} & 0b_{12} + 0b_{22} + ... + 0b_{n2} & ... & 0b_{1k} + 0b_{2k} + ... +0b_{nk} \\ 
+            a_{21}b_{11} + a_22b_{21} ... +a_{2n}b_{n1} & a_{21}b_{12} + a_22b_{22} ... +a_{2n}b_{n2} & ... & a_{21}b_{1k} + a_22b_{2k} ... +a_{2n}b_{nk}  \\ 
+            \vdots & \vdots &  & \vdots \\ 
+            a_{m1}b_{11} + a_{m2}b_{21} + ... +a_{mn}b_{n1} & a_{m1}b_{12} + a_{m2}b_{22} + ... +a_{mn}b_{n2} & & a_{m1}b_{1k} + a_{m2}b_{2k} + ... +a_{mn}b_{nk}  
+        \end{bmatrix} $ \\ 
+        $ AB = \begin{bmatrix}
+            0 & 0 & ... & 0 \\ 
+            \vdots & \vdots & & \vdots
+        \end{bmatrix} $
+
+        Hence shown that if $A$ has a row of zeroes and $B$ is any matrix for which $AB$ is defined, then $AB$ also has a row of zeroes. The position of the row of zeroes would not matter in $A$, since the row of zeroes would occur at the same position in $AB$.  
+    \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}

@@ -1,0 +1,220 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{HW1}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra\\ Homework 1}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+\subsection*{\textbf{Ex Set 1.1 Intro to Systems of Linear Equations}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{1.} Which of the following are linear equations in $ x_1, x_2 $ and $ x_3 $? 
+
+    \hspace{3mm} (a) $ x_1 + 5x_2 - \sqrt{2}x_3 = 1 $
+    
+    \hspace{3mm} (b) $ x_1 + 3x_2 + x_1x_3 = 2 $
+    
+    \hspace{3mm} (c) $ x_1 = -7x_2 + 3x_3 $
+
+    \hspace{3mm} (d) $ x_{1}^{-2} + x_2 + 8x_3 = 4 $
+    
+    \hspace{3mm} (e) $ x_{1}^{3/5} - 2x_2 + x_3 = 4 $
+
+    \hspace{3mm} (f) $ \pi x_1 - \sqrt{2}x_2 + \frac{1}{3}x_3 = 7^{1/3} $
+    \begin{solution}
+        
+        (a) Is a linear equation $ \rightarrow $ obvious. \\ 
+        (b) Is not a linear equation because of the term $ x_1x_3 $ \\ 
+        (c) Is a linear equation \\ 
+        (d) Is not a linear equation because of the term $ x_{1}^{-2} $ \\ 
+        (e) Is not a linear equation because of the term $ x_{1}^{3/5} $ \\ 
+        (f) Is a linear equation
+    \end{solution}
+    %New question added like shown below.
+    \question
+    \textbf{2. } Given that $k$ is a constant, which of the following are linear equations? 
+
+    \hspace{3mm} (a) $ x_1 - x_2 + x_3 = sin(k) $
+
+    \hspace{3mm} (b) $ kx_1 - \frac{1}{k}x_2 = 9 $
+
+    \hspace{3mm} (c) $ 2^kx_1 + 7x_2 - x_3 = 0 $
+    \begin{solution}
+        
+        (a) Is linear - $k$ is a constant $ \implies sin(k) $ is a constant. \\ 
+        (b) Is linear. [Assuming that $k \neq 0$] \\ 
+        (c) Is linear - $k$ is a constant $ \implies 2^k $ is a constant. 
+    \end{solution}
+
+    \question
+    \textbf{3. } Find the solution set of each of the following linear equations. 
+
+    \hspace{3mm} (a) $ 7x - 5y = 3 $
+
+    \hspace{3mm} (b) $ 3x_1 - 5x_2 + 4x_3 = 7 $
+
+    \hspace{3mm} (c) $ -8x_1 + 2x_2 - 5x_3 + 6x_4 = 1 $
+
+    \hspace{3mm} (d) $ 3v - 8w + 2x - y + 4z = 0 $
+    \begin{solution}
+
+        (a) $ 7x - 5y = 3 \implies 7x = 3 + 5y \implies x = \frac{3 + 5y}{7} $ \\ %Then by setting a free variable such as $ y = t $, $ x = \frac{3 + 5t}{7} $ \\ 
+        So our solution set becomes $ \{ (x, y) \} = \{ (\frac{3 + 5y}{7}, y) : y \in \mathbb{R} \} $ %= \{ \frac{3 + 5t}{7}, t : t \in \mathbb{R} \}$
+
+        (b) $ 3x_1 - 5x_2 + 4x_3 = 7 \implies 3x_1 = 7 + 5x_2 - 4x_3 \implies x_1 = \frac{7 + 5x_2 -4x_3}{3} $ \\
+        % Then be setting free variables, $ x_2 = s, x_3 = t, x_1 = \frac{7 + 5s -4t}{3} $ \\ 
+        So our solution set becomes $ \{ (x_1, x_2, x_3) \} = \{ ( \frac{7 + 5x_2 -4x_3}{3}, x_2, x_3 ) : x_2, x_3 \in \mathbb{R} \}$
+
+        (c) $ -8x_1 + 2x_2 - 5x_3 + 6x_4 = 1 \implies x_2 = \frac{1 + 8x_1 + 5x_3 -6x_4}{2} $ \\ 
+        Our solution set becomes $ \{ (x_1, x_2, x_3, x_4) \} = \{ (x_1, \frac{1 + 8x_1 + 5x_3 -6x_4}{2} , x_3, x_4) : x_1, x_3, x_4 \in \mathbb{R} \} $ 
+
+        (d) $ 3v - 8w + 2x - y + 4z = 0 \implies y = 3v - 8w + 2x + 4z $ \\
+        Our solution set becomes $ \{ (v, w, x, y, z) \} = \{ (v, w, x, 3v - 8w + 2x + 4z) : v, w, x, z \in \mathbb{R} \} $
+    \end{solution}
+
+    \question
+    \textbf{4. } Find the augmented matrix for each of the following systems of linear equations.
+
+    \hspace{3mm} (a) $ 3x_1 - 2x_2 = -1 $ 
+
+    \hspace{9mm} $ 4x_1 + 5x_2 = 3 $
+
+    \hspace{9mm} $ 7x_1 + 3x_2 = 2 $
+
+    \hspace{3mm} (b) $ 2x_1 \text{\hspace{8mm}} + 2x_3 = 1 $
+
+    \hspace{9mm} $ 3x_1 - x_2 + 4x_3 = 7 $
+
+    \hspace{9mm} $ 6x_1 + x_2 - x_3 = 0 $
+
+    \hspace{3mm} (c) $ x_1 + 2x_2 \text{\hspace{8mm}} - x_4 + x_5 = 1 $
+
+    \hspace{17mm} $ 3x_2 + x_3 \text{\hspace{8mm}} - x_5 = 2 $ 
+
+    \hspace{27mm} $ x_3 + 7x_4 \text{\hspace{6mm}} = 1 $
+
+    \hspace{3mm} (d) $ x_1 \text{\hspace{8mm}} = 1 $
+
+    \hspace{12mm} $ x_2 \text{\hspace{5mm}} = 2 $
+
+    \hspace{17mm} $ x_3 = 3 $
+    \begin{solution}
+        
+        (a) $\begin{bmatrix}
+            3 & -2 & -1 \\ 
+            4 & 5 & 3 \\ 
+            7 & 3 & 2    
+        \end{bmatrix}$ 
+        (b) $ \begin{bmatrix}
+            2 & 0 & 2 & 1 \\ 
+            3 & -1 & 4 & 7 \\ 
+            6 & 1 & -1 & 0
+        \end{bmatrix} $
+        (c) $ \begin{bmatrix}
+            1 & 2 & 0 & -1 & 1 & 1 \\ 
+            0 & 3 & 1 & 0 & -1 & 2 \\ 
+            0 & 0 & 1 & 7 & 0 & 1
+        \end{bmatrix} $
+        (d) $ \begin{bmatrix}
+            1 & 0 & 0 & 1 \\ 
+            0 & 1 & 0 & 2 \\ 
+            0 & 0 & 1 & 3
+        \end{bmatrix} $
+    \end{solution}
+    % \pagebreak
+    \question
+    \textbf{5. } Find a system of linear equations corresponding to the augmented matrix. \\ 
+    (c) $ \begin{bmatrix}
+        7 & 2 & 1 & 3 & -5 \\ 
+        1 & 2 & 4 & 0 & 1
+    \end{bmatrix} $
+    \begin{solution}
+        
+        $ 7x_1 + 2x_2 + x_3 + 3x_4 = -5 $ \\ 
+        $ x_1 + 2x_2 + 4x_3 \text{\hspace{9.75mm}} = 1 $
+    \end{solution}
+
+    \question
+    \textbf{7.} The curve $ y = ax^2 + bx + c $ passes through the points $ (x_1, y_1), (x_2, y_2), \text{ and } (x_3, y_3) $. Show that the coefficients $ a, b, \text{ and }, c $ are a solution of the system of linear equations whose augmented matrix is 
+    $$ \begin{bmatrix}
+        x_{1}^{2} & x_1 & 1 & y_1 \\ 
+        x_{2}^{2} & x_2 & 1 & y_2 \\ 
+        x_{3}^{2} & x_3 & 1 & y_3
+    \end{bmatrix} $$
+    \begin{solution}
+        
+        By substituting the points in the equation we get a system of linear equations as follows: \\ 
+        $ ax_{1}^{2} + bx_{1} + c = y_{1} $ \\ 
+        $ ax_{2}^{2} + bx_{2} + c = y_{2} $ \\ 
+        $ ax_{3}^{2} + bx_{3} + c = y_{3} $ \\ 
+        We can substitute the values as the values are a solution to the equation, as the equation passes through those points. \\ 
+        Then by taking out the augmented matrix from the system of linear equations, we get the augmented matrix $ \begin{bmatrix}
+            x_{1}^{2} & x_1 & 1 & y_1 \\ 
+            x_{2}^{2} & x_2 & 1 & y_2 \\ 
+            x_{3}^{2} & x_3 & 1 & y_3
+        \end{bmatrix} $ as required. Hence shown that the coefficients $a, b, \text{ and }, c $ are a solution.
+    \end{solution}
+
+    \question
+    \textbf{8. } Consider the system of equations \\
+    $   x + y + 2z = a \\ 
+        x \text{\hspace{6mm}} + z = b \\ 
+        2x + y + 3z = c$ \\ 
+    Show that for this system to be consistent, the constants $ a, b, \text{ and }, c $ must satisfy $ c = a + b $
+    \begin{solution}
+        If we add the first and second equation, we get $ x + x + y + 2z + z = a + b \implies 2x + y + 3z = a + b$ \\ 
+        Comparing this equation with the third equation $ 2x + y + 3z = c $ we get $ c = a + b $. Hence shown that for the system of equations to be consistent, the constants must satisfy $ c = a + b $.  
+    \end{solution}
+
+    \question
+    \textbf{9. } Show that if the linear equations $ x_1 + kx_2 = c $ and $ x_1 + lx_2 = d $ have the same solution set, then the equations are identical. 
+    \begin{solution}
+        
+        For the first equation, $ x_1 = c - kx_2 $. Taking an arbitrary constant $x_2 = t$, our equation becomes $ x_1 = c - kt, x_2 = t $ and our solution set becomes $ \{ (c - kt, t) : t \in \mathbb{R} \} $ 
+
+        For the second equation, $ x_1 = d - lx_2 $. Taking an arbitrary constant $ x_2 = s $, our equation becomes $ x_1 = d - ls $ and our solution set becomes $ \{ (d - ls, s) : s \in \mathbb{R} \} $
+
+        On the assumption that both equations have the same solution set, then
+        \begin{equation} \label{eq1}
+            c - kt = d - ls
+        \end{equation}
+        \begin{equation} \label{eq2}
+            t = s
+        \end{equation}
+        Using (2) and substituting in (1),\\ $\implies c - ks = d - ls \\ \implies c - d = ks - ls \\ \implies c - d = s(k - l) $ (3)
+
+        % If $ s = 0 $, then $ c - d = 0 \implies c = d \implies s(k - l) = 0$. Then $ \forall s, s \in \mathbb{R}, k = l $ for the statement to be true.
+
+        On the assumption that the solution set is equal, (3) has to hold true $ \forall s : s \in \mathbb{R} $ which is only possible in the condition that $ c = d $ and $ k = l $ as $ c = d \iff k = l $. \\ 
+        If $ c = d $, then $ 0 = s(k - l) $. So either $ s = 0 $, or $ k = l $. $ \forall s : s \neq 0, k = l $. \\ 
+        If $ k = l $, then $ c - d = s(0) \implies c = d $. \\ 
+        $ \therefore c = d \iff k = l $ 
+        
+        Hence shown that if they have the same solution set, then the equations are equal.
+    \end{solution}
+\end{questions}
+
+\end{document}
