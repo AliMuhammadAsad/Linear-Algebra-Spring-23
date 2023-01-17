@@ -27,6 +27,70 @@
 \begin{document}
 \maketitle
 \section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+
+\subsection*{\textbf{Ex Set 1.3 : Matrices and Matrix Operations}}
+
+\begin{questions}
+    \question
+    \textbf{4. } Consider the matrices
+    $$ A = \begin{bmatrix}
+        3 & 0 \\ -1 & 2 \\ 1 & 1
+    \end{bmatrix},\; B = \begin{bmatrix}
+        4 & -1 \\ 0 & 2
+    \end{bmatrix},\; C = \begin{bmatrix}
+        1 & 4 & 2 \\ 3 & 1 & 5
+    \end{bmatrix},\; D = \begin{bmatrix}
+        1 & 5 & 2 \\ -1 &  0 & 1 \\ 3 & 2 & 4
+    \end{bmatrix},\; E = \begin{bmatrix}
+        6 & 1 & 3 \\ -1 & 1 & 2 \\ 4 & 1 & 3
+    \end{bmatrix} $$
+    Using these matrices, compute the following: \\ 
+    (a) $ 2A^T + C $ \hspace{10mm} (b) $ D^T - E^T $ \hspace{10mm} (c) $ (D - E)^T $ \hspace{10mm} (d) $ B^T + 5C^T $
+    
+    \vspace{2mm} (e) $ \frac{1}{2}C^T - \frac{1}{4}A $ \hspace{7.5mm} (f) $ B - B^T $ \hspace{13mm} (g) $ 2E^T - 3D^T $  \hspace{7mm} (h) $ (2E^T - 3D^T)^T $
+    \begin{solution}
+
+        (a) $ = 2\begin{bmatrix}
+            3 & -1 & 1 \\ 0 & 2 & 1
+        \end{bmatrix} + \begin{bmatrix}
+            1 & 4 & 2 \\ 3 & 1 & 5
+        \end{bmatrix} = \begin{bmatrix}
+            6 & -2 & 2 \\ 0 & 4 & 2
+        \end{bmatrix} + \begin{bmatrix}
+            1 & 4 & 2 \\ 3 & 1 & 5
+        \end{bmatrix} = \begin{bmatrix}
+            7 & 2 & 4 \\ 3 & 5 & 7
+        \end{bmatrix} $
+
+        (b) $ = \begin{bmatrix}
+            1 & -1 & 3 \\ 5 & 0 & 2 \\ 2 & 1 & 4
+        \end{bmatrix} - \begin{bmatrix}
+            6 & -1 & 4 \\ 1 & 1 & 1 \\ 3 & 2 & 3
+        \end{bmatrix} = \begin{bmatrix}
+            -5 & 0 & -1 \\ 4 & -1 & 1 \\ -1 & -1 & 1
+        \end{bmatrix}$
+
+        (c) $ = \Biggl(\begin{bmatrix}
+            1 & 5 & 2 \\ -1 &  0 & 1 \\ 3 & 2 & 4
+        \end{bmatrix} - \begin{bmatrix}
+            6 & 1 & 3 \\ -1 & 1 & 2 \\ 4 & 1 & 3
+        \end{bmatrix}\Biggr)^T = \Biggl( \begin{bmatrix}
+            -5 & 4 & -1 \\ 0 & -1 & -1 \\ -1 & 1 & 1
+        \end{bmatrix} \Biggr)^T = \begin{bmatrix}
+            -5 & 0 & -1 \\ 4 & -1 & 1 \\ -1 & -1 & 1
+        \end{bmatrix} $
+
+        (d) Cannot be computed since the matrix $ B^T $ and $ C^T $ have different orders, so addition is not defined.
+
+        (e) $ = \frac{1}{2}\begin{bmatrix}
+            1 & 3 \\ 4 & 1 \\ 2 & 5
+        \end{bmatrix} -\frac{1}{4}\begin{bmatrix}
+            3 & 0 \\ -1 & 2 \\ 1 & 1
+        \end{bmatrix} = $
+    \end{solution}
+\end{questions}
+
+
 \subsection*{\textbf{Ex Set 1.4 : Inverses; Rules of Matrix Arithmetic}}
 % \vspace{1mm}
 \begin{questions}
