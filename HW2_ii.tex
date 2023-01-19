@@ -1,0 +1,94 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{HW1}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra\\ Homework 1}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+\subsection*{\textbf{Ex Set 1.5 Elementary Matrices and a Method for finding $ A^{-1} $}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{2. } Find a row operation that will restore the given matrix to an identity matrix \\
+    (a) $ \begin{bmatrix}
+        1 & 0 \\ -3 & 1
+    \end{bmatrix} $ \hspace{5mm} (b) $ \begin{bmatrix}
+        1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 3
+    \end{bmatrix} $ \hspace{5mm} (c) $ \begin{bmatrix}
+        0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0
+    \end{bmatrix} $ \hspace{5mm} (d) $ \begin{bmatrix}
+        1 & 0 & -\frac{1}{7} & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1
+    \end{bmatrix} $ 
+    \begin{solution}
+        
+    \end{solution}
+
+    \textbf{3. } Consider the matrices: 
+    $$ A = \begin{bmatrix}
+        3 & 4 & 1 \\ 2 & -7 & -1 \\ 8 & 1 & 5
+    \end{bmatrix}, \;\;\;\; B = \begin{bmatrix}
+        8 & 1 & 5 \\ 2 & -7 & -1 \\ 3 & 4 & 1 
+    \end{bmatrix}, \;\;\;\; C = \begin{bmatrix}
+        3 & 4 & 1 \\ 2 & -7 & -1 \\ 2 & -7 & 3
+    \end{bmatrix} $$
+
+    Find the elementary matrices $ E_1, E_2, E_3, \text{ and } E_4 $ such that \\ 
+    (a) $ E_1A = B $ \hspace{5mm} (b) $ E_2B = A $ \hspace{5mm} (c) $ E_3A = C $ \hspace{5mm} (d) $ E_4C = A $
+    \begin{solution}
+        
+    \end{solution}
+
+    \textbf{9. } Find the inverse of the following $ 4 \times 4 $ matrices, where $ k_1, k_2, k_3, k_4 $ and $k$ are all nonzero \\ 
+    (a) $ \begin{bmatrix}
+        k_1 & 0 & 0 & 0 \\ 0 & k_2 & 0 & 0 \\ 0 & 0 & k_3 & 0 \\ 0 & 0 & 0 & k_4
+    \end{bmatrix} $ \hspace{5mm} (b) $ \begin{bmatrix}
+        0 & 0 & 0 & k_1 \\ 0 & 0 & k_2 & 0 \\ 0 & k_3 & 0 & 0 \\ k_4 & 0 & 0 & 0
+    \end{bmatrix} $
+    \begin{solution}
+        
+    \end{solution}
+
+    \textbf{10.} Consider the matrix $ A = \begin{bmatrix}
+        1 & 0 \\ -5 & 2
+    \end{bmatrix} $ \\ 
+    (a) Find the elementary matrices $ E_1 $ and $ E_2 $ such that $ E_2E_1A = I $ \\ 
+    (b) Write $ A^{-1} $ as a product of two elementary matrices. \\ 
+    (c) Write $A$ as a product of two elementary matrices.
+    \begin{solution}
+        
+    \end{solution}
+
+    \textbf{16. } Show that $ A = \begin{bmatrix}
+        0 & a & 0 & 0 & 0 \\ b & 0 & c & 0 & 0 \\ 0 & d & 0 & e & 0 \\ 0 & 0 & f & 0 & g \\ 0 & 0 & 0 & h & 0
+    \end{bmatrix} $ is not invertible for any values of the entries. 
+    
+    [\textit{Hint: The row containing $b$ must become the first row after ERO have been carried out and the one with $g$ must be  the last row. Why? this caused problems when trying to reduce the middle column to only one nonzero entry.}]
+    \begin{solution}
+        
+    \end{solution}
+
+\end{questions}
+
+\end{document}
