@@ -192,7 +192,17 @@
     
     [\textit{Hint: The row containing $b$ must become the first row after ERO have been carried out and the one with $g$ must be  the last row. Why? this caused problems when trying to reduce the middle column to only one nonzero entry.}]
     \begin{solution}
-        
+        It is sufficient to show that $A$ can have a row of zeroes through elementary row operations to show that $A$ is not invertible. \\ 
+        We can perform the following row operations: $ R_1 \rightarrow \frac{d}{a}R_1 $ and $ R_5 \rightarrow \frac{e}{h}R_5 $. \\ 
+        $ \implies A = \begin{bmatrix}
+        0 & d & 0 & 0 & 0 \\ b & 0 & c & 0 & 0 \\ 0 & d & 0 & e & 0 \\ 0 & 0 & f & 0 & g \\ 0 & 0 & 0 & e & 0
+    \end{bmatrix} $ \\ 
+    Then by the following row operations, $ R_3 \rightarrow R_3 - R_1 $ and $ R_3 \rightarrow R_3 - R_5 $ we get \\ 
+    $ A = \begin{bmatrix}
+        0 & d & 0 & 0 & 0 \\ b & 0 & c & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & f & 0 & g \\ 0 & 0 & 0 & e & 0
+    \end{bmatrix} $ \\ 
+    Therefore, we are left with a row of zeroes which shows that $A$ is not invertible for any values of the entries as we get a row of zeroes through elementary row operations.
+
     \end{solution}
 
 \end{questions}
