@@ -1,0 +1,273 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{HW1}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra Spring 23\\ Assignment 1 | Lecture 3}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+% \subsection*{\textbf{Ex Set 1.4 : Inverses; Rules of Matrix Arithmetic}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{Q1. } Let $A = \begin{bmatrix}
+        0 & 0 & 1 \\ 2 & 1 & 0 \\ 1 & -2 & 0
+    \end{bmatrix} $ \\ 
+    (a) Find $ A^2 $ and $ A^3 $ \\ 
+    (b) Show that $ A^3 = A^2 + A - 5I $ \\ 
+    (c) Using (b) without doing anymore multiplication, prove that: 
+
+    \hspace{5mm} (i) $ A^4 = 2A^2 - 4A - 5I $
+
+    \hspace{5mm} (ii) $ A^{-1} = \frac{1}{5}(I + A - A^2) $
+    \begin{solution}
+        
+        (a) $ A^2 = AA = \begin{bmatrix}
+            0 & 0 & 1 \\ 2 & 1 & 0 \\ 1 & -2 & 0
+        \end{bmatrix} \begin{bmatrix}
+            0 & 0 & 1 \\ 2 & 1 & 0 \\ 1 & -2 & 0
+        \end{bmatrix}  = \begin{bmatrix}
+            0 + 0 + 1 & 0 + 0 + -2 & 0 + 0 + 0 \\
+            0 + 2 + 0 & 0 + 1 + 0 & 2 + 0 + 0 \\ 
+            0 - 4 + 0 & 0 - 2 + 0 & 1 + 0 + 0 
+        \end{bmatrix} $ \\ 
+        $ A^2 = \begin{bmatrix}
+            1 & -2 & 0 \\ 2 & 1 & 2 \\ -4 & -2 & 1
+        \end{bmatrix} $ \\ 
+        $ A^3 = AAA = A^2A = \begin{bmatrix}
+            1 & -2 & 0 \\ 2 & 1 & 2 \\ -4 & -2 & 1
+        \end{bmatrix} \begin{bmatrix}
+            0 & 0 & 1 \\ 2 & 1 & 0 \\ 1 & -2 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            0 - 4 + 0 & 0 - 2 + 0 & 1 + 0 + 0 \\ 
+            0 + 2 + 2 & 0 + 1 - 4 & 2 + 0 + 0 \\ 
+            0 - 4 + 1 & 0 - 2 - 2 & - 4 + 0 + 0\\
+        \end{bmatrix} $ \\ 
+        $ A^3 = \begin{bmatrix}
+            -4 & -2 & 1 \\ 4 & -3 & 2 \\ -3 & -4 & -4
+        \end{bmatrix} $
+
+        \vspace{2mm}
+        (b) $ A^3 = A^2 + A - 5I $ \\ 
+        Then $ A^3 = \begin{bmatrix}
+            1 & -2 & 0 \\ 2 & 1 & 2 \\ -4 & -2 & 1
+        \end{bmatrix} + \begin{bmatrix}
+            0 & 0 & 1 \\ 2 & 1 & 0 \\ 1 & -2 & 0
+        \end{bmatrix} - 5\begin{bmatrix}
+            1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+        \end{bmatrix}$ \\ 
+        $ A^3 = \begin{bmatrix}
+            1 & -2 & 0 \\ 4 & 2 & 2 \\ -3 & -4 & 1
+        \end{bmatrix} - \begin{bmatrix}
+            5 & 0 & 0 \\ 0 & 5 & 0 \\ 0 & 0 & 5
+        \end{bmatrix}$ \\ 
+        $ \implies A^3 = \begin{bmatrix}
+            -4 & -2 & 0 \\ 4 & -3 & 2 \\ -3 & -4 & -4
+        \end{bmatrix} $ which is the same as the result we found in part (a). Hence shown. 
+
+        \vspace{2mm}
+        (c) (i) $ A^4 = 2A^2 -4A -5I $. \\ 
+        We know that $ A^3 = A^2 + A - 5I $. Then $ A^4 = A^3A = A^2A + AA - 5IA$ \\ 
+        $ \implies A^4 = A^3 + A^2 - 5A $ \\ 
+        $ \implies A^4 = A^2 + A - 5I + A^2 + - 5A $ \\ 
+        $ \implies A^4 = 2A^2 - 4A - 5I $ which is the same as the question. Hence shown. 
+
+        \vspace{1mm}
+        (ii) $ A^{-1} = \frac{1}{5}(I + A - A^2) $ \\ 
+        We know that $ A^3 = A^2 + A - 5I $. Then $ A^3A^{-1} = A^2A^{-1} + AA^{-1} -5IA^{-2} $ \\ 
+        $ \implies A^2 = A + I -5A^{-1} $ \\ 
+        $ \implies 5A^{-1} = A + I - A^2 $ \\ 
+        $ \implies A^{-1} = \frac{1}{5}(I + A - A^2) $ Hence shown!
+    \end{solution}
+
+    \question
+    \textbf{Q2. } Show that the most general matrix that commutes with $ P = \begin{bmatrix}
+        0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+    \end{bmatrix} $ is of the form $ \begin{bmatrix}
+        a & b & c \\ 0 & a & b \\ 0 & 0 & a
+    \end{bmatrix} $
+    \begin{solution}
+        Let the matrix be $A$ that commutes with $P$. Then $ PA = AP $. \\ 
+        Let $ A = \begin{bmatrix}
+            a & b & c \\ e & f & g \\ h & i & j
+        \end{bmatrix} $. \\ 
+        Then $ PA = \begin{bmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+        \end{bmatrix} \begin{bmatrix}
+            a & b & c \\ e & f & g \\ h & i & j
+        \end{bmatrix} = \begin{bmatrix}
+            e & f & g \\ h & i & j \\ 0 & 0 & 0
+        \end{bmatrix}$ \\ 
+        and $ AP = \begin{bmatrix}
+            a & b & c \\ e & f & g \\ h & i & j
+        \end{bmatrix} \begin{bmatrix}
+            0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            0 & a & b \\ 0 & e & f \\ 0 & h & i
+        \end{bmatrix}$ \\ 
+        For $P$ to commute with $A$, $ PA = AP $ \\ 
+        $ \implies \begin{bmatrix}
+            e & f & g \\ h & i & j \\ 0 & 0 & 0
+        \end{bmatrix} = \begin{bmatrix}
+            0 & a & b \\ 0 & e & f \\ 0 & h & i
+        \end{bmatrix} $ \\ 
+        By comparison, $ e = 0$, $f = a$, $g = b$, $h = 0$, $i = e = 0$, $j = f = a$ where $a$ has some value, $b$ has some value, $c$ has some value [we consider c since c can have any value, even though $c$ does not appear in either $PA$ or $AP$]. \\ 
+        Then by plugging in the values in the matrix $A$, \\ 
+        $ A = \begin{bmatrix}
+            a & b & c \\ e = 0 & f = a & g = b \\ h = 0 & i = 0 & j = a 
+        \end{bmatrix} \implies A = \begin{bmatrix}
+            a & b & c \\ 0 & a & b \\ 0 & 0 & a
+        \end{bmatrix} $ hence shown!
+    \end{solution}
+
+    \question
+    \textbf{Q3. } \begin{parts}
+        \part If $A$ is be a square matrix then $ A + A^T $ is symmetric and $ A - A^T $ is skew symmetric.
+        \part If $A$ is $ m \times n $ matrix, then prove that $ AA^T $ and $ A^TA $ are both symmetric [See Q7.]
+        \part If $ A^2 = A $, $ A^{-1} $ exists, then $A = I$.
+        \part If $A$ is invertible, then prove that $ (A^{-1})^T = (A^T)^{-1} $
+    \end{parts}
+    \begin{solution}
+
+        (a) By the definition, a matrix $A$ is symmetric if $ A = A^T $. \\ 
+        Following the definition, if $A$ is a square matrix, then $ A + A^T $ is symmetric. \\ 
+        $ A + A^T = (A + A^T) $ \hspace{20mm} [By the definition] \\ 
+        $ A + A^T = A^T + (A^T)^T $ \hspace{15.5mm} [$ \therefore (A^T)^T = A $] \\ 
+        $ A + A^T = A^T + A \implies A + A^T = A + A^T$. Hence proved is symmetric. \\ 
+        By the definition, a matrix $A$ is skew symmetric if $ A = -A^T $ \\ 
+        Following the definition, if $A$ is a square matrix, then $ A - A^T $ is skew symmetric. \\ 
+        $ A - A^T = - (A - A^T)^T $ \hspace{20mm} [By the definition] \\ 
+        $ A - A^T = -A^T - (-A^T)^T $ \hspace{15mm} [$ \therefore (A^T)^T = A $] \\ 
+        $ A - A^T = - A^T + A \implies A - A^T = A - A^T $. Hence proved is skew-symmetric.
+    \end{solution}
+
+    \question
+    \textbf{Q4. } Question 2 from Exercise 1.3 
+    \begin{solution}
+        Already done in previous homework
+    \end{solution}
+    \pagebreak
+    \question
+    \textbf{Q5. } Let $ A = \begin{bmatrix}
+        1 & 0 \\ 1 & 2
+    \end{bmatrix} $ and $ B = \begin{bmatrix}
+        2 & -1 \\ -1 & 2
+    \end{bmatrix} $. Show that if the matrix $ X = \begin{bmatrix}
+        x & y \\ z & t
+    \end{bmatrix} $ satisfies the equation $ AX = XB $, then $X$ is a scalar multiple of $ \begin{bmatrix}
+        1 & 1 \\ -1 & -1
+    \end{bmatrix} $
+    \begin{solution}
+        $ AX = \begin{bmatrix}
+            1 & 0 \\ 1 & 2
+        \end{bmatrix} \begin{bmatrix}
+            x & y \\ z & t
+        \end{bmatrix} = \begin{bmatrix}
+            x & y \\ x + 2z & y + 2t
+        \end{bmatrix}$ \\ 
+        $ XB = \begin{bmatrix}
+            x & y \\ z & t
+        \end{bmatrix} \begin{bmatrix}
+            2 & -1 \\ -1 & 2
+        \end{bmatrix} = \begin{bmatrix}
+            2x - y & -x + 2y \\ 2z - t & -z + 2t
+        \end{bmatrix}$ \\ 
+        $ AX = XB \implies \begin{bmatrix}
+            x & y \\ x + 2z & y + 2t
+        \end{bmatrix} = \begin{bmatrix}
+            2x - y & -x + 2y \\ 2z - t & -z + 2t
+        \end{bmatrix} $ \\ 
+        By comparison: \\ 
+        \textcircled{1} $ x = 2x - y \implies x = y $ \\ 
+        \textcircled{2} $ y = -x + 2y \implies x = y $ \\ 
+        \textcircled{3} $ x + 2z = 2z - t \implies x = -t = y$ \\ 
+        \textcircled{4} $ y + 2t = -z + 2t \implies y = -z = x$ \\ 
+        Then $ X = \begin{bmatrix}
+            x & x \\ -x & -x
+        \end{bmatrix} = x\begin{bmatrix}
+            1 & 1 \\ -1 & -1
+        \end{bmatrix} \forall x \; | \; x \in \mathbb{R} $ Hence shown.  
+    \end{solution}
+
+    \question
+    \textbf{Q6. } If $A$ is a square matrix of order $3$ such that $ A^T = -A $, then prove that the diagonal entries of $A = 0$.
+    \begin{solution}
+        Let $ A = \begin{bmatrix}
+            a & b & c \\ d & e & f \\ g & h & i
+        \end{bmatrix} $. \\ 
+        Then $ -A^T = \begin{bmatrix}
+            -a & -d & -g \\ -b & -e & -h \\ -c & -f & -i
+        \end{bmatrix} $. \\ 
+        Then $ A^T = -A \implies \begin{bmatrix}
+            a & d & g \\ b & e & h \\ c & f & i
+        \end{bmatrix} = \begin{bmatrix}
+            -a & -b & -c \\ -d & -e & -f \\ -g & -h & -i
+        \end{bmatrix} $. 
+
+        By comparison, $ a = -a $, $ d = -b $, $ g = -c $, $ b = -d $, $ e = -e $, $ h = -f $, $ c = -g $, $ f = -h $, and $ i = -i $. Then $ a = 0 $, $ e = 0 $, and $ i = 0 $ as that can only be the case when both matrices are equal, therefore proved. \\ 
+        Then $ A = \begin{bmatrix}
+            0 & b & c \\ d & 0 f \\ g & h & 0
+        \end{bmatrix} $
+    \end{solution}
+    \pagebreak
+    \question
+    \textbf{Q7. } If $A, B$ are matrices such that $ AB $ is defined then $ (AB)^T = B^TA^T$. \\ 
+    Check this result for $ 2 \times 2 $ matrices by taking general entries. [Note: The transpose of a product of any number of matrices is equal to the product of their transposes in the reverse order. i.e $ (A_1A_2...A_n)^T = A^T_n...A^T_2A^T_1 $]
+    \begin{solution}
+        Let $ A = \begin{bmatrix}
+            a_{11} & a_{12} \\ a_{21} & a_{22}
+        \end{bmatrix} $ and $ B = \begin{bmatrix}
+            b_{11} & b_{12} \\ b_{21} & b_{22}
+        \end{bmatrix} $. \\ 
+        Then $ AB = \begin{bmatrix}
+            a_{11} & a_{12} \\ a_{21} & a_{22}
+        \end{bmatrix}\begin{bmatrix}
+            b_{11} & b_{12} \\ b_{21} & b_{22}
+        \end{bmatrix} = \begin{bmatrix}
+            a_{11}b_{11} + a_{12}b_{21} & a_{11}b_{12} + a_{12}b_{22} \\ a_{21}b_{11} + a_{22}b_{21} & a_{21}b_{12} + a_{22}b_{22} 
+        \end{bmatrix} $. \\ 
+        Then $ (AB)^T = \begin{bmatrix}
+            a_{11}b_{11} + a_{12}b_{21} & a_{21}b_{11} + a_{22}b_{21} \\ a_{11}b_{12} + a_{12}b_{22} & a_{21}b_{12} + a_{22}b_{22}  
+        \end{bmatrix} $. \\ 
+        $ B^T = \begin{bmatrix}
+            b_{11} & b_{21} \\ b_{12} & b_{22}
+        \end{bmatrix} $ and $ A^T = \begin{bmatrix}
+            a_{11} & a_{21} \\ a_{12} & a_{22}
+        \end{bmatrix} $. \\ 
+        Then $ B^TA^T = \begin{bmatrix}
+            b_{11} & b_{21} \\ b_{12} & b_{22}
+        \end{bmatrix}\begin{bmatrix}
+            a_{11} & a_{21} \\ a_{12} & a_{22}
+        \end{bmatrix} = \begin{bmatrix}
+            b_{11}a_{11} + b_{21}a_{12} & b_{11}a_{21} + b_{21}a_{22} \\ b_{12}a_{11} + b_{22}a_{12} & b_{12}a_{21} + b_{22}a_{22}
+        \end{bmatrix} \\ \implies B^TA^T = \begin{bmatrix}
+            a_{11}b_{11} + a_{12}b_{21} & a_{21}b_{11} + a_{22}b_{21} \\ a_{11}b_{12} + a_{12}b_{22} & a_{21}b_{12} + a_{22}b_{22}
+        \end{bmatrix}$. \\ 
+        Hence shown $ (AB)^T = B^TA^T $ for general $ 2 \times 2 $ matrices.
+    \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}
