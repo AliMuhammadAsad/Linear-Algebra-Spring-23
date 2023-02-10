@@ -1,0 +1,128 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{arydshln}
+\makeatletter
+  \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Assignment 2}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra Spring 23\\ Assignment 2 | Lecture 5}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+% \subsection*{\textbf{Ex Set 1.4 : Inverses; Rules of Matrix Arithmetic}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{Q1. } (a) Under what conditions $ AB = BA $ where $ A = \begin{bmatrix}
+        a_{11} & a_{12} \\ a_{21} & a_{22}
+    \end{bmatrix} $, $ B = \begin{bmatrix}
+        b_{11} & b_{12} \\ b_{21} & b_{22}
+    \end{bmatrix} $ 
+
+    \hspace{8.2mm} (b) If $A$ is a matrix then $ A^rA^s = A^{r + s}  \; [\forall r, s \in \mathbb{Z^+}]$. 
+    
+    \hspace{14mm} Is this result true for negative integers also? Justify your answer
+
+    \hspace{8.2mm} (c) If $ A = \begin{bmatrix}
+        0 & 1 \\ 0 & 2
+    \end{bmatrix}, \; B = \begin{bmatrix}
+        1 & 1 \\ 3 & 4
+    \end{bmatrix} $ and $ c = \begin{bmatrix}
+        2 & 5 \\ 3 & 4
+    \end{bmatrix} $. Then $ AB = BC = \begin{bmatrix}
+        3 & 4 \\ 6 & 8
+    \end{bmatrix} $ but $ B \neq C $. 
+    
+    \hspace{14mm} Why?
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q2. } Using the technique of forming a block matrix $\begin{bmatrix}[c:c]
+        A & I
+    \end{bmatrix}$ and performing EROS such that $ \begin{bmatrix}[c:c]
+        A & I
+    \end{bmatrix} \xrightarrow{EROS} \begin{bmatrix}[c:c]
+        I & A^{-1}
+    \end{bmatrix}$. Find the inverse of the following where $A$ is given by \\ (a) $ \begin{bmatrix}
+        1 & 0 & 2 \\ 2 & -1 & 3 \\ 4 & 1 & 8
+    \end{bmatrix} $ (b) $ \begin{bmatrix}
+        1 & 2 & -4 \\ -1 & -1 & 5 \\ 2 & 7 & -3
+    \end{bmatrix} $
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q3. } Solve the following system of equations by reducing them to Echelon form (Guassian Elimination method) \\ 
+    $ x + y + 2z = 9 \\ 2x + 4y - 3z = 1 \\ 3x + 6y -5z = 0 $
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q4. } Solve the following system by Gauss-Jordan elimination (reduced row Echelon form) \\ 
+    $ 2x_1 + 2x_2 + 2x_3 = 0 \\ -2x_1 + 5x_2 + 2x_3 = 1 \\ 8x_1 + x_2 + 4x_3 = -1 $
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q5. } Reduce $ \begin{bmatrix}
+        2 & 1 & 3 \\ 0 & -2 & 7 \\ 3 & 4 & 5
+    \end{bmatrix} $ to reduced row echelon form without introducing any fractions.
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q6. } Find two different row Echelon forms of $ \begin{bmatrix}
+        1 & 3 \\ 2 & 7
+    \end{bmatrix} $ 
+    \begin{solution}
+        
+    \end{solution}
+
+    \question
+    \textbf{Q7. } Exercise set 1.3 Q25
+    \begin{solution}
+        Done in Homework 3 i
+    \end{solution}
+
+    \question
+    \textbf{Q8. } Exercise set 1.3 Q18 and 19
+    \begin{solution}
+        Done in Homework 3 i
+    \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}
