@@ -1,0 +1,271 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{arydshln}
+\makeatletter
+  \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Homework 5}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra Spring 23\\ Homework 5}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 2: Determinants and Matrix Properties}}
+\subsection*{\textbf{Ex Set 2.3: Properties of the Determinant Function}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{Question 3} By inspection, explain why det$(A) = 0$
+    $$ A = \begin{bmatrix}
+        -2 & 8 & 1 & 4 \\ 3 & 2 & 5 & 1 \\ 1 & 10 & 6 & 5 \\ 4 & -6 & 4 & -3
+    \end{bmatrix} $$
+    \begin{solution}
+        By inspection, the following row operation can be done \\ 
+        $ R_2 \rightarrow R_2 + R_1 \implies A = \begin{bmatrix}
+            -2 & 8 & 1 & 4 \\ 1 & 10 & 6 & 5 \\ 1 & 10 & 6 & 5 \\ 4 & -6 & 4 & -3
+        \end{bmatrix} $
+        \\ We can clearly see that there are two identical rows: \\ 
+        $ R_2 = \rightarrow R_2 - R_3 \implies A = \begin{bmatrix}
+            -2 & 8 & 1 & 4 \\ 0 & 0 & 0 & 0 \\ 1 & 10 & 6 & 5 \\ 4 & -6 & 4 & -3
+        \end{bmatrix} $
+        \\ By using EROS, we get a row of zeroes, therefore, det$(A) = 0$.
+    \end{solution}
+    \pagebreak
+    \question
+    \textbf{Question 4} Use Theorem 2.3.3 to determine which of the following matrices are invertible. 
+        
+        (a) $ \begin{bmatrix}
+            1 & 0 & -1 \\ 9 & -1 & 4 \\ 8 & 9 & -1
+        \end{bmatrix} $
+        \hspace*{5mm} (b) $ \begin{bmatrix}
+            4 & 2 & 8 \\ -2 & 1 & -4 \\ 3 & 1 & 6
+        \end{bmatrix} $
+        \hspace*{5mm} (c) $ \begin{bmatrix}
+            \sqrt{2} & -\sqrt{7} & 0 \\ 3\sqrt{2} & -3\sqrt{7} & 0 \\ 5 & -9 & 0 
+        \end{bmatrix} $
+        \hspace*{5mm} (d) $ \begin{bmatrix}
+            -3 & 0 & 1 \\ 5 & 0 & 6 \\ 8 & 0 & 3
+        \end{bmatrix} $
+        \begin{solution}
+
+            Theorem 2.3.3: \textit{A square matrix is invertible if and only if det$ (A) \neq 0 $}
+
+            Further, suppose each matrix to be as $A$
+            \begin{parts}
+                \part det$ (A) = 1\begin{bmatrix}
+                    -1 & 4 \\ 9 & -1
+                \end{bmatrix} - 0 -1\begin{bmatrix}
+                    9 & -1 \\ 8 & 9
+                \end{bmatrix} = 1(1 - 36) + 0 -1(81 + 8) \neq 0$
+
+                Therefore is invertible.
+
+                % \part It can be clearly seen that 
+                \part det$ (A) = 4\begin{bmatrix}
+                    1 & -4 \\ 1 & 6
+                \end{bmatrix} + -2\begin{bmatrix}
+                    -2 & -4 \\ 3 & 6
+                \end{bmatrix} + 8 \begin{bmatrix}
+                    -2 & 1 \\ 3 & 1
+                \end{bmatrix} = 4(6 + 4) - 2(-12 + 12) + 8(-2 - 3) = 40 - 40 = 0$
+                $ \therefore det(A) = 0 $
+
+                Also, it can be clearly seen that $ R_1 $ is a scalar multiple of $ R_2 $. Therefore this matrix is not invertible.
+
+                \part The last column is a column of zeroes, therefore the determinant is zero. Hence this matrix is not invertible.
+
+                \part Column of zeroes, determinant is zero, therefore not invertible.
+            \end{parts}
+        \end{solution}
+
+        \question
+        \textbf{Question 5} Let $ A = \begin{bmatrix}
+            a & b & c \\ d & e & f \\ g & h & i
+        \end{bmatrix} $. Assuming that det$(A) = -7$, find: 
+
+        (a) det$(3A)$ \hspace*{5mm} (b) det$(A^{-1})$ \hspace*{5mm} (c) det$(2A^{-1})$ \hspace*{5mm} (d) det$((2A)^{-1})$ \hspace*{5mm} (e) det$\begin{bmatrix}
+            a & g & d \\ b & h & e \\ c & i & f
+        \end{bmatrix}$
+        \begin{solution}
+            By a basic property, det$ (kA) = k^n $det$ (A) $
+            \begin{parts}
+                \part $ det(3A) = 3^3 det(A) = 27 * -7 = -189 $
+                \part $ det(A^{-1}) = \frac{1}{det(A)} = \frac{1}{-7} $
+                \part $ det(2A^{-1}) = 2^3 det(A^{-1}) = \frac{8}{det(A)} = -\frac{8}{7} $
+                \part $ det((2A)^{-1}) = \displaystyle\frac{1}{det(2A)} = \frac{1}{2^3 det(A)} = -\frac{1}{8 * 7} = -\frac{1}{56}$
+                \part From inspection, if we take the tranpose of the matrix, we get $ \begin{bmatrix}
+                    a & b & c \\ g & h & i \\ d & e & f
+                \end{bmatrix} $. Then by swapping $ R_2 $ with $ R_3 $, we get $ \begin{bmatrix}
+                    a & b & c \\ d & e & f \\ g & h & i
+                \end{bmatrix} $ which is the same as the matrix given in the question. Therefore $ det = -(-7) $ as we took the tranpose. So $ det = 7 $.
+            \end{parts}
+        \end{solution}
+
+        \question
+        \textbf{Question 6} Without directly evaluating, show that $ x = 0 $ and $ x = 2 $ satisfy $ \begin{vmatrix}
+            x^2 & x & 2 \\ 2 & 1 & 1 \\ 0 & 0 & -5
+        \end{vmatrix} = 0 $
+        \begin{solution}
+            
+            (1) $x = 0$:
+            $ \begin{vmatrix}
+                0 & 0 & 2 \\ 2 & 1 & 1 \\ 0 & 0 & -5
+            \end{vmatrix} \implies R_3 \rightarrow R_3 + \frac{5}{2}R_1 \begin{vmatrix}
+                0 & 0 & 2 \\ 2 & 1 & 1 \\ 0 & 0 & 0
+            \end{vmatrix}$ \\ 
+            Since we have a row of zeroes, the determinant is also 0. Hence $ x = 0 $ satisfies the matrix.
+
+            (2) $ x = 2 $
+            $ \begin{vmatrix}
+                4 & 2 & 2 \\ 2 & 1 & 1 \\ 0 & 0 & -5
+            \end{vmatrix} \implies R_1 \rightarrow \frac{1}{2}R_1 \begin{vmatrix}
+                2 & 1 & 1 \\ 2 & 1 & 1 \\ 0 & 0 & -5
+            \end{vmatrix}$ \\ 
+            Since we have two identical rows, the determinant of the matrix is 0. Hence shown that $ x = 2 $ satisfies the matrix. 
+        \end{solution}
+
+        \question
+        \textbf{Question 7} Without directly evaluating show that $ det \begin{bmatrix}
+            b+c & c+a & b+a \\ a & b & c \\ 1 & 1 & 1 
+        \end{bmatrix} = 0$
+        \begin{solution}
+            
+            By inspection, $ R_1 \rightarrow R_1 + R_2 \implies \begin{bmatrix}
+                a+b+c & a+b+c & a+b+c \\ a & b & c \\ 1 & 1 & 1
+            \end{bmatrix} $ \\ Then $ R_1 \rightarrow \frac{1}{a + b + c} \implies \begin{bmatrix}
+                1 & 1 & 1 \\ a & b & c \\ 1 & 1 & 1
+            \end{bmatrix} $
+
+            Hence we are left with two identical matrices. Therefore the determinant is zero.
+        \end{solution}
+        \pagebreak
+        \question
+        \textbf{Question 8} Prove the identity without evaluating the determinants \\ 
+        $ \begin{vmatrix}
+            a_1 & b_1 & a_1 + b_1 + c_1 \\ 
+            a_2 & b_2 & a_2 + b_2 + c_2 \\ 
+            a_3 & b_3 & a_3 + b_3 + c_3
+        \end{vmatrix} = \begin{vmatrix}
+            a_1 & b_1 & c_1 \\
+            a_2 & b_2 & c_2 \\ 
+            a_3 & b_3 & c_3 
+        \end{vmatrix}$
+        \begin{solution}
+            Column operations have no effect on the determinant: \\
+            LHS: 
+            $ C_3 \rightarrow C_3 - C_2 - C_1 \implies \begin{vmatrix}
+                a_1 & b_1 & c_1 \\
+                a_2 & b_2 & c_2 \\ 
+                a_3 & b_3 & c_3 
+            \end{vmatrix} = $ RHS. Hence proved.
+        \end{solution}
+        
+        \question
+        \textbf{Question 9} Prove the identity without evaluating determinants. \\ 
+        $ \begin{vmatrix}
+            a_1 + b_1 & a_1 - b_1 & c_1 \\ 
+            a_2 + b_2 & a_2 - b_2 & c_2 \\
+            a_3 + b_3 & a_3 - b_3 & c_3
+        \end{vmatrix} = -2 \begin{vmatrix}
+            a_1 & b_1 & c_1 \\
+            a_2 & b_2 & c_2 \\ 
+            a_3 & b_3 & c_3
+        \end{vmatrix}$
+        \begin{solution}
+            LHS: $ C_1 \rightarrow C_1 + C_2 \implies \begin{vmatrix}
+                2a_1 & a_1 - b_1 & c_1 \\
+                2a_2 & a_2 - b_2 & c_2 \\ 
+                2a_3 & a_3 - b_3 & c_3  
+            \end{vmatrix} $ \\ 
+            We can take 2 common from the first column, and then apply the column operations: $ C_2 \rightarrow C_2 - C_1 \implies 2\begin{vmatrix}
+                a_1 & -b_1 & c_1 \\
+                a_2 & -b_2 & c_2 \\ 
+                a_3 & -b_3 & c_3  
+            \end{vmatrix} = $ RHS \\ 
+            Further taking -1 common from the second column, we get $ -2\begin{vmatrix}
+                a_1 & b_1 & c_1 \\
+                a_2 & b_2 & c_2 \\ 
+                a_3 & b_3 & c_3
+            \end{vmatrix} $ Hence proved.
+        \end{solution}
+
+        \question
+        \textbf{Question 11} Prove the identity without evaluating determinants. \\ 
+        $ \begin{vmatrix}
+            a_1 & b_1 + ta_1 & c_1 + rb_1 + sa_1 \\ 
+            a_2 & b_2 + ta_2 & c_2 + rb_2 + sa_2 \\ 
+            a_3 & b_3 + ta_3 & c_3 + rb_3 + sa_3 
+        \end{vmatrix} = \begin{vmatrix}
+            a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3
+        \end{vmatrix}$
+        \begin{solution}
+            LHS: $ C_2 \rightarrow C_2 - tC_1, c_3 \rightarrow C_3 - sC_1 \implies \begin{vmatrix}
+                a_1 & b_1 & c_1 + rb_1 \\ 
+                a_2 & b_2 & c_2 + rb_2 \\ 
+                a_3 & b_3 & c_3 + rb_3 
+            \end{vmatrix} $ \\ 
+            $ C_3 \rightarrow C_3 - rC_2 \implies \begin{vmatrix}
+                a_1 & b_1 & c_1 \\ 
+                a_2 & b_2 & c_2 \\
+                a_3 & b_3 & c_3 
+            \end{vmatrix} $ by tranpose $ \implies \begin{vmatrix}
+                a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3
+            \end{vmatrix} $ [$det(A) = det(A^T)$] \\ 
+            Hence proved.
+        \end{solution}
+
+        \question
+        \textbf{Question 13} Use Theorem 2.3.3 to show that $ \begin{bmatrix}
+            \sin^2\alpha & \sin^2\beta & \sin^2\gamma \\ 
+            \cos^2\alpha & \cos^2\beta & \cos^2\gamma \\ 
+            1 & 1 & 1 
+        \end{bmatrix} $ is not invertible for any values of $ \alpha, \beta, \text{ and } \gamma $. 
+        \begin{solution}
+            By $ R_1 \rightarrow R_1 + R_2 $ we will get $ \sin^2\alpha + \cos^2\alpha, \sin^2\beta + \cos^2\beta, \sin^2\gamma + \cos^2\gamma $ in the first row. And by basic trigonometric identity, it will reduce to 1. So the first row becomes a row of 1s, and so does the third row. Since we have two identical rows, the determinant is 0. Therefore, the matrix is not invertible for any values of $ \alpha, \beta, \gamma $.
+        \end{solution}
+
+        \question
+        \textbf{Question 16} Let $A$ and $B$ be $ n_{\times}n $ matrices. Show that if $A$ is invertible, then $ det(B) = det(A^{-1}BA) $.
+        \begin{solution}
+            If $A$ is invertible, then $ det(A) \neq 0 \therefore det(A^{-1}) = \frac{1}{det(A)} $ is defined. \\ 
+            $ det(B) = det(A^{-1}) * det(B) * det(A) $ by the theorem. \\ $ \implies det(B) = \frac{1}{det(A)} * det(B) * det(A) $ \\ 
+            $ \implies det(B) = det(B) $ Hence proved.   
+        \end{solution}
+
+        \question
+        \textbf{Question 21} Let $A$ and $B$ be $n_{\times}n$ matrices. You know from earlier work that $AB$ is invertible if $A$ and $B$ are invertible. What can you say about the invertibility of $AB$ if one or both of the factors are singular? Explain your reasoning. 
+        \begin{solution}
+            If $A$ and $B$ are $n_{\times}n$ matrices, then $ det(AB) = det(A) * det(B) $. \\ 
+            If either one of the matrices are not invertible, then either $ det(A) = 0 $ or $ det(B) = 0 $ or both equal to 0. \\ 
+            Then $ det(AB) = det(A) * det(B) \implies det(AB) = 0 $. \\ 
+            Then $AB$ is also not invertible. So if one or both of the factors are singular, then $AB$ is not invertible.
+        \end{solution}
+
+\end{questions}
+\end{sloppypar}
+\end{document}
