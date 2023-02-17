@@ -1,0 +1,281 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{arydshln}
+\makeatletter
+  \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Exercise 9 and 10}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra Spring 23\\ Exercise 9 and 10}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 2: Determinants and Matrix Properties}}
+% \vspace{1mm}
+\begin{questions}
+    \subsection*{\textbf{Ex Set 2.1: Determinants by Cofactor Expansion}}
+
+    \question
+    \textbf{Question 1} Let $A = \begin{bmatrix}
+        1 & -2 & 3 \\ 6 & 7 & -1 \\ -3 & 1 & 4
+    \end{bmatrix}$ \\ (a) Find all the minors of $A$ \hspace*{10mm} (b) Find all the Cofactors of $A$
+    \begin{solution}
+        \begin{parts}
+            \part $ M_{11} = \text{Minor of }a_{11} = \begin{vmatrix}
+                7 & -1 \\ 1 & 4
+            \end{vmatrix} = 7(4) - (-1) = 29, M_{12} = 6(4) - (3) = 21, M_{13} = 27, M_{21} = -11, M_{22} = 13, M_{23} = -5, M_{31} = -19, M_{32} = -19, M_{33} = 19$
+            \part $ C_{11} = i^{1+1}M_{11} = 29, C_{12} = -21, C_{13} = 27, C_{21} = 11, C_{22} = 13, C_{23} = 5, C_{31} = -19, C_{32} = 19, C_{33} = 19 $
+        \end{parts}
+    \end{solution}
+
+    \question
+    \textbf{Question 8} Evaluate $ det(A) $ by Cofactor expansion along a row or column of your choice. \\ $ A = \begin{bmatrix}
+        k+1 & k-1 & 7 \\ 2 & k-3 & 4 \\ 5 & k+1 & k
+    \end{bmatrix} $
+    \begin{solution}
+        Expanding on the first row, $|A| = (k+1)\begin{vmatrix}
+            k-3 & 4 \\ k+1 & k
+        \end{vmatrix} - (k-1)\begin{vmatrix}
+            2 & 4 \\ 5 & k
+        \end{vmatrix} + 7\begin{vmatrix}
+            2 & k-3 \\ 5 & k+1
+        \end{vmatrix} \implies |A| = (k+1)(k^2 - 3k -4k - 4) - (k-1)(2k - 20) + 7(2k+1 - 5k + 15) = (k+1)(k^2 -7k - 4) - (2k^2 -22k +20) + (-21k + 112) = k^3 -6k^2 -11k - 4 -2k^2 +22k - 20 -21k + 112 = k^3 -8k^2 -10k + 88$ 
+    \end{solution}
+
+    \question
+    \textbf{Question 22} Show that the matrix $ A = \begin{bmatrix}
+        \cos\theta & \sin\theta & 0 \\ -\sin\theta & \cos\theta & 0 \\ 0 & 0 & 1
+    \end{bmatrix} $ is invertible for all values of $\theta$;then find $ A^{-1} $ using Theorem 2.1.2. 
+    \begin{solution}
+        
+        Theorem 2.1.2: \textit{If $A$ is an invertible matrix, then $ A^{-1} = \displaystyle\frac{1}{det(A)}\text{adj}(A) $}
+
+        We can take the determinant on the last row for our ease, since 2 coefficients are zero so will reduce to 0. \\ 
+        $det(A) = 0 + 0 + 1\begin{vmatrix}
+            \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta
+        \end{vmatrix} = 1(\cos^2\theta + \sin^2\theta) = 1(1) = 1$
+
+        Since $ det(A) \neq 0 $, the matrix is invertible. 
+
+        Then adj$ (A) = \begin{bmatrix}
+            \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1
+        \end{bmatrix} $
+
+        $ \therefore A^{-1} = \begin{bmatrix}
+            \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1
+        \end{bmatrix} $
+    \end{solution}
+
+    \question
+    \textbf{Question 24} Let $ Ax = B $ be the system: $$ 4x + y + z + w = 6 $$ $$ 3x + 7y -z + w = 1 $$ $$ 7x + 3y -5z + 8w = -3 $$ $$ x + y + z + 2w = 3 $$
+    (a) Solve by Cramer's Rule \\ (b) Solve by Gauss-Jordan Elimination \\ (c) Which method involves faster computations?
+    \begin{solution}
+        \begin{parts}
+            \part $ A = \begin{pmatrix}
+                4 & 1 & 1 & 1 \\ 3 & 7 & -1 & 1 \\ 7 & 3 & -5 & 8 \\ 1 & 1 & 1 & 2
+            \end{pmatrix}, b = \begin{pmatrix}
+                6 \\ 1 \\ -3 \\ 3
+            \end{pmatrix} $ and $ det(A) = -424 $
+
+            Then by Crammer's Rule;
+            
+            $ A_1 = \begin{pmatrix}
+                6 & 1 & 1 & 1 \\ 1 & 7 & -1 & 1 \\ -3 & 3 & -5 & 8 \\ 3 & 1 & 1 & 2
+            \end{pmatrix} \implies |A_1| = -424 \implies x = \frac{|A_1|}{A} = \frac{-424}{-424} = 1$
+
+            $ A_2 = \begin{pmatrix}
+                4 & 6 & 1 & 1 \\ 3 & 1 & -1 & 1 \\ 7 & -3 & -5 & 8 \\ 1 & 3 & 1 & 2
+            \end{pmatrix} \implies |A_2| = 0 \implies y = 0$
+
+            $ A_3 = \begin{pmatrix}
+                4 & 1 & 6 & 1 \\ 3 & 7 & 1 & 1 \\ 7 & 3 & -3 & 8 \\ 1 & 1 & 3 & 2
+            \end{pmatrix} \implies |A_3| = -848 \implies z = \frac{-848}{-424} = 2$
+
+            $ A_4 = \begin{pmatrix}
+                4 & 1 & 1 & 6 \\ 3 & 7 & -1 & 1 \\ 7 & 3 & -5 & -3 \\ 1 & 1 & 1 & 3
+            \end{pmatrix} \implies |A_4| = 0 \implies w = 0 $
+
+            Then the solution becomes $ x = 1, y = 0, z = 2, w = 0 \implies x = \begin{bmatrix}
+                1 \\ 0 \\ 2 \\ 0
+            \end{bmatrix}$ 
+
+            \part Gauss-Jordan Elimination blah blah blah lamba chora kaam for $ 4_{\times}4 $
+
+            \part Crammer's Rule invoves fewer computations.
+        \end{parts}
+    \end{solution}
+
+    \question
+    \textbf{Question 25} Prove that if $ det(A) = 1 $ and all the entries in $A$ are integers, then all the entries in $A^{-1}$ are integers. 
+    \begin{solution}
+        
+        If a matrix has all integer entries, then each minor is an integer and it follows that each CoFactor is also an integer. Then the determinant of the matrix $A$ is also an integer if the matrix $A$ has all integer entries. 
+
+        Then from the theorem, it follows that $ A^{-1} = \frac{1}{det(A)} \text{adj}(A)$. Since $det(A) = 1$, it follows that $ A^{-1} = adj(A) $. We know that $A$ has all integer entries, therefore the adjoint of $A$, that is $adj(A)$ would also have integer entries as integers are closed under multiplication, addition, and subtraction. Therefore $A^{-1}$ also has only integer entries. 
+
+        Hence proved.
+    \end{solution}
+    \pagebreak
+    \question
+    \textbf{Question 26} Let $Ax = B$ be a system of $n$ linear equations in $n$ unknowns with integer coefficients and integer constants. Prove that if $ det(A) = 1 $, the solution $x$ has integer entries.
+    \begin{solution}
+        By Crammer's Rule, the solution of $Ax = b$ is:
+        $$ x_1 = \displaystyle\frac{det(A_1)}{det(A)}, x_2 = \displaystyle\frac{det(A_2)}{det(A)}, x_3 = \displaystyle\frac{det(A_3)}{det(A)} $$
+        where $A_i(i = 1, 2, 3)$ is the matrix obtained by replacing the $i^{\text{th}}$ column by $b$.
+
+        As $det(A) = 1$, therefore, $ x_1 = det(A_1), x_2 = det(A_2), x_3 = det(A_3) $. 
+
+        Since $A$ and $b$ both have only integer entries, therefore $A_1, A_2, $ and $A_3$ also only have integer entries. Since $A$ has integer entries, then $det(A)$ is an integer, therefore $det(A_1), det(A_2), det(A_3)$ are also integers. Hence the solution to $x$ that is $ x_1, x_2, x_3 $ are also all integers. 
+
+        Therefore the solution $x$ only has integer entries.
+    \end{solution}
+
+\vspace*{5mm}
+\subsection*{Ex Set 2.2: Evaluating Determinants by Row Reduction}
+    \question
+    \textbf{Question 12} Given that $\begin{vmatrix}
+        a & b & c \\ d & e & f \\ g & h & i
+    \end{vmatrix} = -6 $, find:
+
+    (a) $ \begin{vmatrix}
+        d & e & f \\ g & h & i \\ a & b & c
+    \end{vmatrix} $ \hspace*{5mm} 
+    (b) $\begin{vmatrix}
+        3a & 3b & 3c \\ -d & -e & -f \\ 4g & 4h & 4i
+    \end{vmatrix}$ \hspace*{5mm} 
+    (c) $ \begin{vmatrix}
+        a + g & b + h & c + i \\ d & e & f \\ g & h & i
+    \end{vmatrix} $ \\ 
+    (d) $ \begin{vmatrix}
+        -3a & -3b & -3c \\ d & e & f \\ g - 4d & h - 4e & i - 4f
+    \end{vmatrix} $
+    \begin{solution}
+        \begin{parts}
+            \part There have been two row operations, that is two rows have been swapped twice. Therefore $det = -6*-1*-1 = -6$
+            \part There have been a few row operations, $R_1$ has been multiplied by 3, $R_2$ multiplied with -1, and $R_3$ multiplied with 4. Therefore $det = -6 * 3 * -1 * 4 = 72$
+            \part Since we have $ R_1 \rightarrow R_1 + R_3 $, therefore determinant remains unchanged. $det = -6$
+            \part Here a few row operations have been performed. $R_1 * -3$, $ R3 \rightarrow R_3 - 4R_2 $ So $ det = -6 * -3 = 18 $
+        \end{parts}
+    \end{solution}
+
+    \question
+    \textbf{Question 13} Use row reduction to show that $\begin{vmatrix}
+        1 & 1 & 1 \\ a & b & c \\ a^2 & b^2 & c^2
+    \end{vmatrix} = (b - a)(c - a)(c - b)$
+    \begin{solution}
+        We can make the following matrix an upper triangular matrix. \\ 
+        $ R_2 = R_2 - aR_1, R_3 = R_3 - a^2R_1 \begin{vmatrix}
+            1 & 1 & 1 \\ 0 & b-a & c-a \\ 0 & b^2 - a^2 & c^2 - a^2
+        \end{vmatrix}$ [$ b^2 - a^2 = (b-a)(b+a) $, then $ -(b-a)(b+a) = -(b^2 - a^2) $] \\ 
+        $ R_3 = R_3 -(b+a)R_2 \begin{vmatrix}
+            1 & 1 & 1 \\ 0 & b-a & c - a \\ 0 & 0 & (c^2 - a^2) - (c-a)(b+a)
+        \end{vmatrix} $ \\ 
+        $ \implies det = 1 * (b - a) * [(c-a)(c+a) - (c-a)(b+a)] \implies (b-a)(c-a)(c + a - b - a) \\ \implies 
+        (b - a)(c - a)(c - b)
+        $
+
+        Hence shown
+    \end{solution}
+
+    \question
+    \textbf{Question 14} Use an argument like that in the proof of Theorem 2.1.3 to show that: \\ 
+    (a) $det\begin{bmatrix}
+        0 & 0 & a_{13} \\ 0 & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}
+    \end{bmatrix} = -a_{13}a_{22}a_{31}$ \hspace*{5mm} (b) $det\begin{bmatrix}
+        0 & 0 & 0 & a_{14} \\ 0 & 0 & a_{23} & a_{24} \\ 0 & a_{32} & a_{33} & a_{34} \\ a_{41} & a_{42} & a_{43} & a_{44}
+    \end{bmatrix} = a_{14}a_{23}a_{32}a_{41}$
+    \begin{solution}
+        Theorem 2.1.3: \textit{If $A$ is an $n_\times n$ traingular matrix(upper, lower or diagonal), then $det(A)$ is the product of the entries on the main diagonal of the matrix; that is, $det(A) = a_{11}a_{22}...a_{nn}$ }
+
+        \begin{parts}
+            \part If we expand on column 1, we get:\\
+            $ det = 0 - 0 + a_{31}\begin{bmatrix}
+                0 & a_{13} \\ a_{22} & a_{23}
+            \end{bmatrix} = a_{31}(-a_{13}a_{22}) = -a_{31}a_{13}a_{22}$
+
+            Hence shown.
+
+            \part On expansion along the first column, we get:\\ 
+            $ det = 0 - 0 + 0 - a_{41}\begin{bmatrix}
+                0 & 0 & a_{14} \\ 0 & a_{23} & a_{24} \\ a_{32} & a_{33} & a_{34}
+            \end{bmatrix} = -a_{41}\biggl( 0 - 0 + a_{32}\begin{bmatrix}
+                0 & a_{14} \\ a_{23} & a_{24}
+            \end{bmatrix} \biggr) \\ = -a_{41}(a_{32}(-a{14}a_{23})) = a_{41}a_{32}a_{14}a_{23}$
+
+            Hence shown.
+        \end{parts}
+    \end{solution}
+    \pagebreak
+    \question
+    \textbf{Question 15} Prove the following special cases of Theorem 2.2.3
+
+    (a) $ \begin{vmatrix}
+        a_{21} & a_{22} & a_{23} \\
+        a_{11} & a_{12} & a_{13} \\
+        a_{31} & a_{32} & a_{33} 
+    \end{vmatrix} = - \begin{vmatrix}
+        a_{11} & a_{12} & a_{13} \\ 
+        a_{21} & a_{22} & a_{23} \\ 
+        a_{31} & a_{32} & a_{33}
+    \end{vmatrix} $ \\
+    (b) $ \begin{vmatrix}
+        a_{11} + ka_{21} & a_{12} + ka_{22} & a_{13} + ka_{23} \\ 
+        a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}
+    \end{vmatrix} = \begin{vmatrix}
+        a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}
+    \end{vmatrix}$
+    \begin{solution}
+        
+        Theorem 2.2.3: \textit{Let $A$ be an $n_\times n$ matrix.}
+        \begin{parts}
+            \part \textit{If $B$ is the matrix that results when a single row or a single column of $A$ is multiplied by a scalar $k$, then $ det(B) = k det(A) $}.
+            \part \textit{If $B$ is the matrix that results when two rows or two columns of $A$ are interchanged, then $det(B) = -det(A)$}
+            \part \textit{If $B$ is the matrix that resulst when a multiple of one row of $A$ is added to another row or when a multiple of one column is added to another column, then $det(B) = det(A)$}
+        \end{parts}
+
+        \vspace*{10mm}
+        \textbf{Solution:}
+
+        $det(A) = \sum \pm a_{1j_1}a_{2j_2}a_{3j_3}$
+        \begin{parts}
+            \part Then $det(A) = \sum \pm a_{2j_1}a_{1j_2}a_{3j_3} = \sum \pm a_{1j_1}a_{2j_1}a_{3j_3} = -det(A)$
+            
+            Hence shown 
+
+            \part Then $det(A) = \sum \pm (a_{1j_1} + ka_{2j_2})a_{2j_1}a_{3j_3} = \sum \pm a_{1j_1}a_{2j_2}a_{3j_3} = det(A)$
+
+            Hence shown
+        \end{parts}
+    \end{solution}
+
+
+
+
+\end{questions}
+\end{sloppypar}
+\end{document}
