@@ -1,0 +1,112 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+\usepackage{arydshln}
+\makeatletter
+  \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Exercise 6}{Linear Algebra}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{} %Comment this to number questions, uncomment this to not number questions
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Linear Algebra Spring 23\\ Exercise 6 Solutions}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+\begin{sloppypar}
+\section*{\textbf{Chapter 1 : Linear Equations and Matrices}}
+\subsection*{\textbf{Ex Set 1.6 : Further Results on Systems of Equations and Invertibility}}
+% \vspace{1mm}
+\begin{questions}
+    \question
+    \textbf{Question 16} 
+    Find the conditions that the $b's$ must satisfy for the system to be consistent. \\ 
+    $ 6x_1 - 4x_2 = b_1 $ \\ $ 3x_1 - 2x_2 = b_2 $
+    \begin{solution}
+        $ \begin{bmatrix}[cc|c]
+            6 & -4 & b_1 \\ 3 & -2 & b_2           
+        \end{bmatrix} $ \hspace*{5mm} R$_1 - 2$R$_2 \begin{bmatrix}[cc|c]
+            0 & 0 & b_1 - b_2 \\ 3 & -2 & b_2            
+        \end{bmatrix}$ 
+
+        We can see that the first row gets a row of zeroes, then it must be consistent for $ b_1 = 2b_2 $
+    \end{solution}
+
+    \question
+    \textbf{Question 23}
+    Let $ Ax = 0 $ be a homogenous system of $n$ linear equations in $n$ unknowns that has only the trivial solution. Show that if $k$ is any positive integer, then the system $ A^k x = 0 $ also has only the trivial solution.
+    \begin{solution}
+        
+        Since $ Ax = 0 $ has only the trivial solution, then theorem 1.6.4 guarantees that $A$ is invertible. Then by Theorem 1.4.8 (b), $ A^k $ is also invertible. Then $ (A^k)^{-1} = (A^{-1})^k $
+
+        We can note that $ \underbrace{A^{-1}A^{-1}A^{-1} \cdots A^{-1}}_\text{k factors} \underbrace{AAA\cdots A}_\text{k factors} = I$ 
+
+        Since $ A^k $ is invertible, therefore, by theorem 1.6.4 we can conclude that $ A^k x = 0$ also only has the trivial solution.
+    \end{solution}  
+    \pagebreak
+    \question
+    \textbf{Question 24}
+    Let $ Ax = 0 $ be a homogenous system of $n$ linear equations, in $n$ unknowns, and let $Q$ be an invertible $ n\times n $ matrix. Show that $ Ax = 0 $ has the trivial solution if and only if $ (QA)x = 0 $ has just the trivial solution.
+    \begin{solution}
+        Let $ Ax = 0 $ hold true. Then $ Q(Ax) = Q0 \implies (QA)x = 0 \because $ Associative Law \\ 
+        Now let $ (QA)x = 0 $ hold true, [as shown above]. \\ Then $ Q^{-1} (QA) x = Q^{-1} 0 \implies (Q^{-1}Q)Ax = Q^{-1}0 \because $Associative Law \\ 
+        $ \implies IAx = 0 \implies Ax = 0 $
+
+        Hence proved.
+    \end{solution}
+
+    \question
+    \textbf{Question 25}
+    Let $ Ax = b $ be any consistent system of linear equations, and let $x_1$ be a fixed solution. Show that every solution to the system can be written in the form $x = x_1 + x_0$ where $x_0$ is a solution $Ax = 0$. Show that every matrix of this form is a solution. 
+    \begin{solution}
+        Suppose that $x_1$ is a fixed matrix which satisfies the equation $ Ax_1 = b $. Further let $x$ be any matrix whatsoever which satisfies the equation $Ax = b$. We must show that there is a matrix $x_0$ which satisfies both of the equations $x = x_1 + x_0$ and $Ax_0 = 0$. Show that every matrix of this form is a solution. 
+
+        Then the first equation implies that $ x_0 = X - X_1 $. \\ 
+        This candidate for $x_0$ will satisfy the second equation because $ Ax_0 = A(x - x_1) = Ax - Ax_1 = b - b = 0 $
+
+        We must also show that if both $ Ax_1 = b $ and $Ax_0 = 0$, then $ A(x_1 + x_0) = b $. \\ But $ A(x_1 + x_0) = Ax_1 + Ax_0 = b + 0 = b $
+    \end{solution}
+
+    \question
+    \textbf{Question 26}
+    Let $A$ be a square matrix.
+
+    (a) If $B$ is a square matrix satisfying $BA = I$, then $ B = A^{-1} $
+
+    (b) If $B$ is a square matrix satisfying $AB = I$, then $ B = A^{-1} $
+
+    Use part (a) to prove part (b)
+
+    \begin{solution}
+        For $ B = A^{-1} $ [from (a)]. \\ Given that $ AB = I $, and $BA = I$. \\ 
+        Hence $ AB = BA = I \implies B = A^{-1} $ for $AB = I$. \\ Another thing can be seen is $ A^{-1}A = A A^{-1} = I $
+    \end{solution}
+
+
+
+    
+    
+\end{questions}
+\end{sloppypar}
+\end{document}
